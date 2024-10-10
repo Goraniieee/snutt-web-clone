@@ -7,4 +7,5 @@ export default [
   ...react({
     tsconfigRootDir: import.meta.dirname,
   }),
+  ...pluginQuery.configs['flat/recommended'],
 ];
