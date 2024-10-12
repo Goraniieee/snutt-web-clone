@@ -1,12 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useMutation } from '@tanstack/react-query';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { login } from "../apis/login";
-
+import { login } from '../apis/login';
 
 export const LoginPage = () => {
-
   const navigate = useNavigate();
 
   const [id, setId] = useState('');
@@ -16,10 +14,10 @@ export const LoginPage = () => {
     mutationFn: () => login(id, pw),
     onSuccess: (token) => {
       sessionStorage.setItem('token', token);
-      navigate("/home");
+      navigate('/home');
     },
     onError: (error) => {
-      console.error("Login failed:", error);
+      console.error('Login failed:', error);
     },
   });
 
@@ -27,34 +25,38 @@ export const LoginPage = () => {
 
   const onClickBack = () => {
     navigate('/');
-  }
+  };
 
   const onClickLogin = () => {
     handleLogin();
-  }
+  };
 
-  const onSubmitLogin = (e: { preventDefault: () => void; }) => {
+  const onSubmitLogin = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     handleLogin();
-  }
+  };
 
-  const onIdChange = (e: { target: { value: string; }; }) => {
+  const onIdChange = (e: { target: { value: string } }) => {
     setId(e.target.value);
-  }
+  };
 
-  const onPwChange = (e: { target: { value: string; }; }) => {
+  const onPwChange = (e: { target: { value: string } }) => {
     setPw(e.target.value);
-  }
+  };
 
   const handleLogin = () => {
     if (!idAndPwFull) return;
     loginMutation.mutate();
-  }
+  };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-start">
-      <div className="w-full flex flex-row p-2 items-center ">
-        <button id="navigate-back" className="absolute left-1 flex flex-row items-center justify-center" onClick={onClickBack}>
+    <div className="flex h-screen w-screen flex-col items-center justify-start">
+      <div className="flex w-full flex-row items-center p-2">
+        <button
+          id="navigate-back"
+          className="absolute left-1 flex flex-row items-center justify-center"
+          onClick={onClickBack}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -69,27 +71,47 @@ export const LoginPage = () => {
           >
             <polyline points="15 18 9 12 15 6" />
           </svg>
-          <div className="font-pretendard font-semibold text-base">뒤로</div>
+          <div className="font-pretendard text-base font-semibold">뒤로</div>
         </button>
 
-        <div className="mx-auto text-center font-pretendard font-semibold text-lg">로그인</div>
+        <div className="mx-auto text-center font-pretendard text-lg font-semibold">
+          로그인
+        </div>
       </div>
 
       <div className="w-full border-t border-[#dbdbdb]"></div>
 
-      <form className="w-full h-full flex flex-col items-start justify-between p-2" onSubmit={onSubmitLogin}>
-        <div className="w-full flex flex-col p-2 gap-4">
+      <form
+        className="flex h-full w-full flex-col items-start justify-between p-2"
+        onSubmit={onSubmitLogin}
+      >
+        <div className="flex w-full flex-col gap-4 p-2">
           <div id="id-input" className="w-full py-1">
-            <div className="font-pretendar font-semibold text-sm text-gray-500">아이디</div>
-            <input type="text" className="w-full border-b-2 p-1 mt-1 font-pretendar text-xs text-gray-500" placeholder="아이디를 입력하세요" onChange={onIdChange}/>
+            <div className="font-pretendar text-sm font-semibold text-gray-500">
+              아이디
+            </div>
+            <input
+              type="text"
+              className="font-pretendar mt-1 w-full border-b-2 p-1 text-xs text-gray-500"
+              placeholder="아이디를 입력하세요"
+              onChange={onIdChange}
+            />
           </div>
 
           <div id="pw-input" className="w-full py-1">
-            <div className="font-pretendard font-semibold text-sm text-gray-500">비밀번호</div>
-            <input type="password" className="w-full border-b-2 p-1 mt-1 font-pretendar text-xs text-gray-500" placeholder="비밀번호를 입력하세요" onChange={onPwChange}/>
+            <div className="font-pretendard text-sm font-semibold text-gray-500">
+              비밀번호
+            </div>
+            <input
+              type="password"
+              className="font-pretendar mt-1 w-full border-b-2 p-1 text-xs text-gray-500"
+              placeholder="비밀번호를 입력하세요"
+              onChange={onPwChange}
+            />
           </div>
         </div>
-        <button className="mx-auto w-11/12 h-10 p-3 rounded-md font-pretendard font-semibold text-sm leading-3 my-8"
+        <button
+          className="mx-auto my-8 h-10 w-11/12 rounded-md p-3 font-pretendard text-sm font-semibold leading-3"
           disabled={!idAndPwFull}
           style={{ backgroundColor: idAndPwFull ? '#F58D3D' : '#dfdfdf' }}
           onClick={onClickLogin}
@@ -99,4 +121,4 @@ export const LoginPage = () => {
       </form>
     </div>
   );
-}
+};

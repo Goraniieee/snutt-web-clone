@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         'sf-pro': ['"SF Pro"', 'sans-serif'],
-        'pretendard': ['Pretendard', 'sans-serif'],
+        pretendard: ['Pretendard', 'sans-serif'],
       },
     },
   },

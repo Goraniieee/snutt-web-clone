@@ -1,5 +1,4 @@
-import { BASE_URL } from "./base";
-
+import { BASE_URL } from './base';
 
 export const getMe = async () => {
   const token = sessionStorage.getItem('token');
@@ -18,7 +17,7 @@ export const getMe = async () => {
     throw new Error('Failed to get me');
   }
 
-  return await response.json() as {
+  return (await response.json()) as {
     id: string;
     isAdmin: boolean;
     regDate: string;
@@ -26,6 +25,6 @@ export const getMe = async () => {
     email: string;
     localId: string;
     fbName: string;
-    nickname: { nickname: string; tag: string; };
+    nickname: { nickname: string; tag: string };
   };
-}
+};
