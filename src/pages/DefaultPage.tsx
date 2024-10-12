@@ -1,5 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 
+import appleLogo from '../assets/images/apple_logo.png';
+import facebookLogo from '../assets/images/facebook_logo.png';
+import googleLogo from '../assets/images/google_logo.png';
+import kakaoLogo from '../assets/images/kakao_logo.png';
+
 export const DefaultPage = () => {
   const navigate = useNavigate();
 
@@ -102,25 +107,25 @@ export const DefaultPage = () => {
             id="kakao"
             className="flex h-11 w-11 items-center justify-center rounded-3xl p-0"
           >
-            <img src="/src/public/kakao_logo.png" alt="kakao logo" />
+            <img src={kakaoLogo} alt="kakao logo" />
           </button>
           <button
             id="google"
             className="flex h-11 w-11 items-center justify-center rounded-3xl border-[0.5px] border-[#C4C4C4] p-1"
           >
-            <img src="/src/public/google_logo.png" alt="google logo" />
+            <img src={googleLogo} alt="google logo" />
           </button>
           <button
             id="facebook"
             className="flex h-11 w-11 items-center justify-center rounded-3xl p-0"
           >
-            <img src="/src/public/facebook_logo.png" alt="facebook logo" />
+            <img src={facebookLogo} alt="facebook logo" />
           </button>
           <button
             id="apple"
             className="flex h-11 w-11 items-center justify-center rounded-3xl p-0"
           >
-            <img src="/src/public/apple_logo.png" alt="apple logo" />
+            <img src={appleLogo} alt="apple logo" />
           </button>
         </div>
       </div>
